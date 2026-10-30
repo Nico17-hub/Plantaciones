@@ -1,0 +1,62 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+    
+    <!--/*/ <th:block th:insert="~{top :: top}"></th:block> /*/-->
+
+    <body>
+
+        <div class="container">
+
+            <!--/*/ <th:block th:insert="~{header :: header}"></th:block> /*/-->
+
+            <h2>Compradores</h2>
+            <div>
+                <form class="form-horizontal" th:object="${entity}" th:action="@{/compradores}" method="post">
+                    <input type="hidden" th:field="*{id}"/>                                
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">Nombre</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" th:field="*{name}"/>
+                        </div>                       
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">Nro CUIT</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" th:field="*{cuit}"/>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">Dirección</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" th:field="*{direccion}"/>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">IVA</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" th:field="*{iva}"/>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">Observación</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" th:field="*{observacion}"/>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <button type="submit" class="btn btn-success">Guardar</button>                        
+                        <a class="btn btn-default" th:href="${'/plantaciones/compradores'}">Cancelar</a>
+                    </div>
+                    <h5 style="color:red;" th:text="${message}"></h5>
+                </form>
+            </div>
+
+        </div>
+
+    </body>
+</html>

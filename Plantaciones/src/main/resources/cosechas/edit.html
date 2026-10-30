@@ -1,0 +1,61 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<!--/*/ <th:block th:insert="~{top :: top}"></th:block> /*/-->
+
+<body>
+
+<div class="container">
+
+    <!--/*/ <th:block th:insert="~{header :: header}"></th:block> /*/-->
+
+    <!-- ============================================================= -->
+    <!-- Inicio Zona de Ajuste -->
+
+    <h2>Cosecha</h2>
+    <div>
+        <form class="form-horizontal" th:object="${entity}" th:action="@{/cosechas}" method="post">
+            <input type="hidden" th:field="*{id}"/>
+
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Fecha</label>
+                <div class="col-sm-10">
+                    <input type="date" class="form-control" th:field="*{fecha}"/>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-sm-2 control-label">
+                    <label align="right">Plantación</label>
+                </div>
+                <div class="col-sm-10">
+                    <select class="form-control" th:field="${entity.plantaciones}">
+                        <option th:each="plantacion : ${plantaciones}"
+                                th:value="${plantacion.id}"
+                                th:selected="${entity.plantaciones != null and entity.plantaciones.id == plantacion.id}"
+                                th:text="${plantacion.periodo}"/>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Rendimientos</label>
+                <div class="col-sm-10">
+                    <input type="number" step="0.01" class="form-control" th:field="*{rendimientos}"/>
+                </div>
+            </div>
+
+            <div class="row">
+                <button type="submit" class="btn btn-success">Guardar</button>
+                <a class="btn btn-default" th:href="${'/plantaciones/cosechas'}">Cancelar</a>
+            </div>
+            <h5 style="color:red;" th:text="${message}"></h5>
+        </form>
+    </div>
+
+    <!-- Fin Zona de Ajuste -->
+
+</div>
+
+</body>
+</html>

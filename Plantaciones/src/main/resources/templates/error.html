@@ -1,0 +1,17 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+
+    <!--/*/ <th:block th:insert="~{top :: top}"></th:block> /*/-->
+
+    <body>
+        <div class="container">
+            <h2>Ups, algo salió mal</h2>
+            <p>
+                <b th:text="${status}">500</b> -
+                <span th:text="${error}">Error</span>
+            </p>
+            <p th:if="${status == 403}">No tenés permisos para entrar a esta sección.</p>
+            <a class="btn btn-default" th:href="@{/}">Volver al inicio</a>
+        </div>
+    </body>
+</html>
